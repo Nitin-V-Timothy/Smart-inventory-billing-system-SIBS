@@ -34,3 +34,17 @@ void Inventory::viewProducts() {
              << " | Price: " << p.price << endl;
     }
 }
+
+bool Inventory::reduceStock(int productId, int qty) {
+    for (auto& p : products) {
+        if (p.id == productId) {
+            if (p.quantity >= qty) {
+                p.quantity -= qty;
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+    return false;
+}

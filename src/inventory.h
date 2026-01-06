@@ -19,6 +19,7 @@ private:
 public:
     void addProduct();
     void viewProducts();
+    bool reduceStock(int productId, int qty);
 };
 
 #endif
