@@ -5,6 +5,7 @@ using namespace std;
 
 int main() {
     Inventory inventory;
+    inventory.loadFromFile();
     Billing billing;
     int choice;
 
@@ -19,6 +20,7 @@ int main() {
 
         if (choice == 1) {
             inventory.addProduct();
+            inventory.saveToFile();
         } 
         else if (choice == 2) {
             inventory.viewProducts();

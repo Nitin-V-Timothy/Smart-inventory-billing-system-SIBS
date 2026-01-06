@@ -1,5 +1,6 @@
 #include "inventory.h"
 #include <iostream>
+#include <fstream>
 
 void Inventory::addProduct() {
     Product p;
@@ -47,4 +48,33 @@ bool Inventory::reduceStock(int productId, int qty) {
         }
     }
     return false;
+}
+
+void Inventory::loadFromFile() {
+    products.clear();
+
+    ifstream file("data/inventory.txt");
+    if (!file.is_open()) {
+        return; // No file yet → start empty
+    }
+
+    Product p;
+    while (file >> p.id >> p.name >> p.quantity >> p.price) {
+        products.push_back(p);
+    }
+
+    file.close();
+}
+
+void Inventory::saveToFile() {
+    ofstream file("data/inventory.txt");
+
+    for (const auto& p : products) {
+        file << p.id << " "
+             << p.name << " "
+             << p.quantity << " "
+             << p.price << endl;
+    }
+
+    file.close();
 }

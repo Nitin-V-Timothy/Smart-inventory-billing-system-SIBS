@@ -20,6 +20,9 @@ public:
     void addProduct();
     void viewProducts();
     bool reduceStock(int productId, int qty);
+    void loadFromFile();
+    void saveToFile();
+
 };
 
 #endif

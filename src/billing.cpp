@@ -12,7 +12,7 @@ void Billing::processSale(Inventory& inventory) {
     cin >> qty;
 
     bool success = inventory.reduceStock(productId, qty);
-
+    inventory.saveToFile();
     if (success) {
         cout << "Sale completed successfully.\n";
     } else {
