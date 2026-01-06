@@ -8,6 +8,11 @@ void Inventory::addProduct() {
     cout << "Enter Product ID: ";
     cin >> p.id;
 
+    if (isProductIdExists(p.id)) {
+        cout << "Error: Product ID already exists.\n";
+        return;
+    }
+
     cout << "Enter Product Name: ";
     cin >> p.name;
 
@@ -77,4 +82,13 @@ void Inventory::saveToFile() {
     }
 
     file.close();
+}
+
+bool Inventory::isProductIdExists(int productId) {
+    for (const auto& p : products) {
+        if (p.id == productId) {
+            return true;
+        }
+    }
+    return false;
 }

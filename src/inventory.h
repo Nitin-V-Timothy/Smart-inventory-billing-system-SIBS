@@ -22,7 +22,7 @@ public:
     bool reduceStock(int productId, int qty);
     void loadFromFile();
     void saveToFile();
-
+    bool isProductIdExists(int productId);
 };
 
 #endif
