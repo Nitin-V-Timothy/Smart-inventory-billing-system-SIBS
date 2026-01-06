@@ -37,7 +37,13 @@ void Inventory::viewProducts() {
         cout << "ID: " << p.id
              << " | Name: " << p.name
              << " | Qty: " << p.quantity
-             << " | Price: " << p.price << endl;
+             << " | Price: " << p.price;
+
+        if (p.quantity <= LOW_STOCK_THRESHOLD) {
+            cout << "  !! LOW STOCK";
+        }
+
+        cout << endl;
     }
 }
 
@@ -46,6 +52,11 @@ bool Inventory::reduceStock(int productId, int qty) {
         if (p.id == productId) {
             if (p.quantity >= qty) {
                 p.quantity -= qty;
+
+                if (p.quantity <= LOW_STOCK_THRESHOLD) {
+                    cout << "!! Warning: Stock for " << p.name << " is low.\n";
+                }
+
                 return true;
             } else {
                 return false;
