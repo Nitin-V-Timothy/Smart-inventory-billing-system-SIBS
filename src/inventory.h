@@ -19,11 +19,11 @@ private:
 
 public:
     void addProduct();
-    void viewProducts();
+    void viewProducts() const;
     bool reduceStock(int productId, int qty);
     void loadFromFile();
     void saveToFile();
-    bool isProductIdExists(int productId);
+    bool isProductIdExists(int productId) const;
 };
 
 #endif

@@ -18,17 +18,27 @@ void Inventory::addProduct() {
 
     cout << "Enter Quantity: ";
     cin >> p.quantity;
+    if (p.quantity < 0)
+    {
+        cout<< "Error: Product Quantity cannot be less than Zero[0].\n";
+        return;
+    }
 
     cout << "Enter Price: ";
     cin >> p.price;
+    if (p.price < 0)
+    {
+        cout<< "Error: Product Price cannot be less than Zero[0].\n";
+        return;
+    }
 
     products.push_back(p);
     cout << "Product added successfully.\n";
 }
 
-void Inventory::viewProducts() {
+void Inventory::viewProducts() const{
     if (products.empty()) {
-        cout << "No products in inventory.\n";
+        cout << "No products in Inventory.\n";
         return;
     }
 
@@ -36,7 +46,7 @@ void Inventory::viewProducts() {
     for (const auto& p : products) {
         cout << "ID: " << p.id
              << " | Name: " << p.name
-             << " | Qty: " << p.quantity
+             << " | Quantity: " << p.quantity
              << " | Price: " << p.price;
 
         if (p.quantity <= LOW_STOCK_THRESHOLD) {
@@ -95,7 +105,7 @@ void Inventory::saveToFile() {
     file.close();
 }
 
-bool Inventory::isProductIdExists(int productId) {
+bool Inventory::isProductIdExists(int productId) const{
     for (const auto& p : products) {
         if (p.id == productId) {
             return true;

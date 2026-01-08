@@ -8,7 +8,7 @@ void Billing::processSale(Inventory& inventory) {
     cout << "Enter Product ID to sell: ";
     cin >> productId;
 
-    cout << "Enter quantity: ";
+    cout << "Enter Quantity: ";
     cin >> qty;
 
     bool success = inventory.reduceStock(productId, qty);
